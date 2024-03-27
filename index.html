@@ -13,9 +13,21 @@
 
 <body>
     <header>
-        <button class="btn btn-white btn-share ml-auto mr-3 ml-md-0 mr-md-auto"><img src="assets/images/share.svg"
-                alt="share" class="btn-img">
-            SHARE</button>
+        <button id="copyButton" class="btn btn-white btn-share ml-auto mr-3 ml-md-0 mr-md-auto">
+            <img src="assets/images/share.svg" alt="share" class="btn-img">
+            SHARE
+        </button>
+
+        <div class="modal fade" id="copyModal" tabindex="-1" role="dialog" aria-labelledby="copyModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        Link copied to clipboard
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <nav class="collapsible-nav" id="collapsible-nav">
             <a href="portfolio.html" class="nav-link"></a>
             <a href="portfolio.html" class="nav-link"></a>
@@ -56,11 +68,11 @@
                     <p>kaagallawan@addu.edu.ph</p>
                     <p>__________________</p>
                     <p>LOCATION : </p>
-                    <p>Davao City, Philippines</p>
+                    <p>Purok 3A-2, Malagos, Baguio District, Davao City</p>
                     <p>__________________</p>
 
-                    <button class="btn btn-download-cv btn-primary rounded-pill">
-                        <a href="assets/images/CV.pdf" download="kaagallawan cv" class="btn">Download CV</a>
+                    <button class="btn btn-download-cv btn-primary rounded-pill "">
+                        <a href="assets/images/CV.pdf" download="kaagallawan cv" class="btn ">Download CV</a>
                     </button>
                 </div>
             </div>
@@ -89,19 +101,45 @@
                 <div class="card-body">
                     <div class="widget-content">
                         <h5 class="widget-title card-title">SKILLS</h5>
-                        <p>Microsoft Office</p>
-                        <p>Canva</p>
-                        <p>Figma</p>
-                        <p>Photoshop</p>
-                        <p>Programming</p>
+                        <div class="skill-item">
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: 80%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">MICROSOFT OFFICE</div>
+                            </div>
+                        </div>
+                        <p></p>
+                        <div class="skill-item">
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: 90%;" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">CANVA</div>
+                            </div>
+                        </div>
+                        <p></p>
+                        <div class="skill-item">
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">FIGMA</div>
+                            </div>
+                        </div>
+                        <p></p>
+                        <div class="skill-item">
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: 85%;" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">PHOTOSHOP</div>
+                            </div>
+                        </div>
+                        <p></p>
+                        <div class="skill-item">
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: 70%;" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">PROGRAMMING</div>
+                            </div>
+                        </div>
+                        <p></p>
                     </div>
+                    
                 </div>
             </div>
         </aside>
         <main>
             <section class="intro-section">
-                <h2 class="section-title">Hello, Kristine!</h2>
-                <p>Hello! I'm a 3rd-year BS Information Systems student at
+                <h2 class="section-title">Hello, I'm Kristine!</h2>
+                <p>Hello! This is Kristine Angela A. Gallawan, a 3rd-year BS Information Systems student at
                     Ateneo de Davao University. I'm passionate about applying
                     my knowledge in web development and database management
                     to create innovative solutions. I'm particularly interested
@@ -255,7 +293,7 @@
                         </div>
                         <div class="carousel-item">
                             <p class="testimonial-content">Will you relish being a poor man's wife, unable to provide
-                                with your life :<<<<< /p>
+                                with your life :<<<<<   </p>
                                     <img src="assets/images/Profile.png" alt="profile" class="testimonial-img">
                                     <p class="testimonial-name">Alexander</p>
                         </div>
@@ -282,6 +320,20 @@
     <script src="assets/vendors/@popperjs/core/dist/umd/popper-base.min.js"></script>
     <script src="assets/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="assets/js/live-resume.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('copyButton').addEventListener('click', function () {
+                const textToCopy = 'https://kristine-ag.github.io/kaagallawan-CV/'; 
+                navigator.clipboard.writeText(textToCopy)
+                    .then(() => {
+                        $('#copyModal').modal('show');
+                    })
+                    .catch((error) => {
+                        console.error('Error copying text: ', error);
+                    });
+            });
+        });
+    </script>
 </body>
 
 </html>
